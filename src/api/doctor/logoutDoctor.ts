@@ -1,10 +1,11 @@
 import axiosInstance from "../axiosInstance.ts";
-import {BASE_URL} from "../../consts/baseURL.ts";
+import {removeToken} from "../../utils/authorizationHelpers.ts";
 
 export const logoutDoctor = async () => {
     try {
-        const response = await axiosInstance.post(`${BASE_URL}/doctor/logout`);
-        return response.data;
+        const response = await axiosInstance.post('/doctor/logout');
+        removeToken()
+        return response;
     } catch (error) {
         console.error("Error while logging out doctor:", error);
         throw error;
