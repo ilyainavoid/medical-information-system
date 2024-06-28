@@ -13,6 +13,7 @@ import {setAuth} from "../../store/actions/authActions.ts";
 import {routes} from "../../consts/routes.ts";
 import {useNavigate} from "react-router-dom";
 import dayjs from "dayjs"
+import {processFormValues} from "../../utils/processFormValues.ts";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -75,18 +76,6 @@ const RegistrationForm: React.FC = () => {
         return dayjs(current).isAfter(dayjs(), 'day');
     };
 
-    const processFormValues = (values: DoctorRegisterModel) => {
-        if (typeof values.speciality === 'object' && 'value' in values.speciality) {
-            // @ts-ignore
-            values.speciality = values.speciality.value;
-        }
-        if (typeof values.gender === 'object' && 'value' in values.gender) {
-            // @ts-ignore
-            values.gender = values.gender.value;
-        }
-        return values;
-    };
-
     const submitForm = async (values: DoctorRegisterModel) => {
         if (values.birthday) {
             // @ts-ignore
@@ -121,14 +110,14 @@ const RegistrationForm: React.FC = () => {
                         <Title style={{fontWeight: 700}}>Регистрация</Title>
                     </Flex>
                     <Form.Item name={"name"} label={"Имя"} rules={validationRules.fullNameValidation()}>
-                        <Input placeholder={"Иванов Иван Иванович"} className={styles.input}/>
+                        <Input placeholder={"Иванов Иван Иванович"} className="input"/>
                     </Form.Item>
                     <Flex>
                         <Form.Item name={"gender"} label={"Пол"} className={styles.genderPickerItem} rules={validationRules.genderValidation()}>
                             <Select
                                 placeholder={"Выберите пол"}
                                 options={genders}
-                                className={styles.input}
+                                className="input"
                             />
                         </Form.Item>
                         <Form.Item name={"birthday"} label={"Дата рождения"} className={styles.datePickerItem}>
@@ -136,20 +125,20 @@ const RegistrationForm: React.FC = () => {
                         </Form.Item>
                     </Flex>
                     <Form.Item name={"phone"} label={"Номер телефона"} rules={validationRules.phoneValidation()}>
-                        <Input placeholder={"+7 (xxx) xxx-xx-xx"} className={styles.input}/>
+                        <Input placeholder={"+7 (xxx) xxx-xx-xx"} className="input"/>
                     </Form.Item>
                     <Form.Item name={"speciality"} label={"Специальность"} rules={validationRules.specialityValidation()}>
                         <Select
                             placeholder={"Выберите специальность"}
                             options={specialitiesOptions}
-                            className={styles.input}
+                            className="input"
                         />
                     </Form.Item>
                     <Form.Item name={"email"} label={"Эл. почта"} rules={validationRules.emailValidation()}>
-                        <Input placeholder={"name@example.com"} className={styles.input}/>
+                        <Input placeholder={"name@example.com"} className="input"/>
                     </Form.Item>
                     <Form.Item name={"password"} label={"Пароль"} rules={validationRules.passwordValidation()}>
-                        <Input.Password className={styles.input}/>
+                        <Input.Password className="input"/>
                     </Form.Item>
                     <Flex className={"button-container"}>
                         <Button type={'primary'} htmlType={'submit'} className={styles.button}>Зарегистрироваться</Button>

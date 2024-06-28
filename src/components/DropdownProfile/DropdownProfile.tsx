@@ -17,7 +17,7 @@ const DropdownProfile: React.FC<DropdownProfileProps> = ({name}) => {
             if (response && response.status === 200) {
                 setTimeout(() => {
                     navigate(routes.login());
-                }, 500);
+                }, 200);
             }
         }
         catch (error) {
@@ -45,7 +45,7 @@ const DropdownProfile: React.FC<DropdownProfileProps> = ({name}) => {
         if (name) {
             if (name.length > 30) {
                 const fullNameArray = name.split(' ');
-                return `${fullNameArray[1]} ${fullNameArray[0]} "..."`
+                return `${fullNameArray[1]} ${fullNameArray[0]} ...`
             }
             return name;
         }

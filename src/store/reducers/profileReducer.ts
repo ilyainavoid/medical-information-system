@@ -9,6 +9,17 @@ const profileReducer = (state = initialState, action: ProfileAction): ProfileSta
     switch (action.type) {
         case ProfileActionType.SET_PROFILE:
             return { ...state, profile: action.payload };
+        case ProfileActionType.UPDATE_PROFILE:
+            if (!state.profile) {
+                return state;
+            }
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    ...action.payload,
+                },
+            };
         default:
             return state;
     }

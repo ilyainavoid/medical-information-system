@@ -6,6 +6,7 @@ export interface ProfileState {
 
 export enum ProfileActionType {
     SET_PROFILE = 'SET_PROFILE',
+    UPDATE_PROFILE = 'UPDATE_PROFILE',
 }
 
 interface SetProfileAction {
@@ -13,4 +14,9 @@ interface SetProfileAction {
     payload: DoctorModel;
 }
 
-export type ProfileAction = SetProfileAction;
+interface UpdateProfileAction {
+    type: ProfileActionType.UPDATE_PROFILE;
+    payload: Partial<DoctorModel>;
+}
+
+export type ProfileAction = SetProfileAction | UpdateProfileAction;

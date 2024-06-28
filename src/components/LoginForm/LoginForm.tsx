@@ -47,10 +47,10 @@ const LoginForm: React.FC = () => {
                         <Title style={{fontWeight: 700}}>Вход</Title>
                     </Flex>
                     <Form.Item name={"email"} label={"Email"} rules={validationRules.emailValidation()}>
-                        <Input placeholder={"Введите email"} className={styles.input}/>
+                        <Input placeholder={"Введите email"} className="input"/>
                     </Form.Item>
                     <Form.Item name={"password"} label={"Пароль"} rules={validationRules.passwordValidation()}>
-                        <Input.Password placeholder={"Введите пароль"} className={styles.input}/>
+                        <Input.Password placeholder={"Введите пароль"} className="input"/>
                     </Form.Item>
                     <Flex className={"button-container"}>
                         <Button type={'primary'} htmlType={'submit'} className={styles.button}>Войти</Button>

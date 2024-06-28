@@ -4,8 +4,7 @@ import {BASE_URL} from "../../consts/baseURL.ts";
 
 export const editDoctorProfile = async ({newProfileData} : {newProfileData : DoctorEditModel}) => {
     try {
-        const response = await axiosInstance.put(`${BASE_URL}/doctor/profile`, newProfileData);
-        return response.data;
+        return await axiosInstance.put(`${BASE_URL}/doctor/profile`, newProfileData);
     }
     catch (error) {
         console.error("Error while editing doctor's profile:", error);
