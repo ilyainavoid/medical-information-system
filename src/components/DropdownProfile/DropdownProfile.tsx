@@ -43,7 +43,7 @@ const DropdownProfile: React.FC<DropdownProfileProps> = ({name}) => {
 
     const formatName = (name: string | undefined): string => {
         if (name) {
-            if (name.length > 20) {
+            if (name.length > 30) {
                 const fullNameArray = name.split(' ');
                 return `${fullNameArray[1]} ${fullNameArray[0]} "..."`
             }

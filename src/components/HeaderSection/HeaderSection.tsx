@@ -19,7 +19,7 @@ const HeaderSection: React.FC = () => {
     const isAuthorized = useSelector((state: RootState) => state.auth.isAuth);
     const location = useLocation();
     const navigate = useNavigate();
-    const profile = useSelector((state: RootState) => state.profile.profile)
+    const profile = useSelector((state: RootState) => state.profile.profile);
 
     const {leftMenuItems, rightMenuItems} = generateMenuItems(isAuthorized);
 
