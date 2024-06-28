@@ -5,5 +5,6 @@ interface MenuRoutes {
 }
 
 export const menuRoutes: MenuRoutes = {
-    main: routes.root()
+    homepage: routes.root(),
+    login: routes.login()
 };

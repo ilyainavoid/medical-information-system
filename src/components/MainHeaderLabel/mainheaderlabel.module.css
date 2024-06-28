@@ -1,3 +1,18 @@
 .label {
-    margin-left: 5vw;
+    margin-left: 40px;
+}
+
+.icon {
+    width: auto;
+    height: 30px;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+}
+
+.strong {
+    font-weight: 700;
+    align-self: end;
 }
