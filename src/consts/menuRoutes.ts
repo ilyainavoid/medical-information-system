@@ -6,5 +6,7 @@ interface MenuRoutes {
 
 export const menuRoutes: MenuRoutes = {
     homepage: routes.root(),
-    login: routes.login()
+    login: routes.login(),
+    profile: routes.profile(),
+    patients: routes.patients()
 };

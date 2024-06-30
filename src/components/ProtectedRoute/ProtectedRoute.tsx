@@ -15,7 +15,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({children}) => {
     const isAuth = useSelector((state: RootState) => state.auth.isAuth);
 
     useEffect(() => {
-        if(getAccessToken() != "") dispatch(setAuth(true))
+        if(getAccessToken() !== null) dispatch(setAuth(true))
     }, [dispatch]);
 
 

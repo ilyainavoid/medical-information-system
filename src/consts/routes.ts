@@ -3,6 +3,6 @@ export const routes = {
     registration: () => '/registration',
     login: () => '/login',
     profile: () => '/profile',
-
+    patients: () => '/patients'
 };
 

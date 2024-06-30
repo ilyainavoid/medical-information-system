@@ -3,7 +3,7 @@ import {
     FILL_IN,
     INVALID_EMAIL_INPUT,
     INVALID_PHONE_INPUT,
-    MAX_30_LENGTH,
+    MAX_50_LENGTH,
     MIN_6_LENGTH
 } from "./strings.ts";
 import {DIGIT_IN_PASSWORD, EMAIL, PHONE} from "./regularExpressions.ts";
@@ -47,7 +47,7 @@ export const validationRules = {
 
     fullNameValidation: () => [
         Validation.requireRule(FILL_IN),
-        Validation.maxLengthValidation(30, MAX_30_LENGTH)
+        Validation.maxLengthValidation(50, MAX_50_LENGTH)
     ],
 
     genderValidation: () => [
@@ -66,7 +66,7 @@ export const validationRules = {
     passwordValidation: () => [
         Validation.requireRule(FILL_IN),
         Validation.minLengthValidation(6, MIN_6_LENGTH),
-        Validation.maxLengthValidation(30, MAX_30_LENGTH),
+        Validation.maxLengthValidation(50, MAX_50_LENGTH),
         Validation.regexStringValidation(DIGIT_IN_PASSWORD, AT_LEAST_A_DIGIT)
     ]
 }

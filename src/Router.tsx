@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage/LoginPage.tsx";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage.tsx";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.tsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.tsx";
+import PatientPage from "./pages/PatientPage/PatientPage.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
                     {
                         path: routes.profile(),
                         element: <ProfilePage/>
+                    },
+                    {
+                        path: routes.patients(),
+                        element: <PatientPage/>
                     }
                 ]
             },

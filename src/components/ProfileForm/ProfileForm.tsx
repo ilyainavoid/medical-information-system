@@ -42,14 +42,19 @@ const ProfileForm: React.FC = () => {
     useEffect(() => {
         if (profile) {
             const gender = profile.gender === 'Male' ? 'Мужской' : 'Женский';
-            const birthday = typeof profile.gender !== 'string' ? null : dayjs.utc(profile.birthday).local();
+            const birthday = profile.birthday === null ? null : dayjs.utc(profile.birthday).local();
             const phone = profile.phone === null ? '' : profile.phone;
+
+            let birthdayForInititalValues;
+            if (birthday !== null) {
+                birthdayForInititalValues = birthday.$d.toISOString()
+            }
 
             const initialValues = {
                 name: profile.name,
                 email: profile.email,
                 // @ts-ignore
-                birthday: birthday.$d.toISOString(),
+                birthday: birthdayForInititalValues,
                 gender: gender,
                 phone: phone
             }
@@ -73,8 +78,7 @@ const ProfileForm: React.FC = () => {
 
     const onValuesChange = (_: Partial<FormValues>, allValues: FormValues) => {
         allValues.gender = (allValues.gender === 'Male' || allValues.gender === 'Мужской') ? 'Мужской' : 'Женский';
-        if (allValues.birthday) {
-            // @ts-ignore
+        if (allValues.birthday !== null) {
             allValues.birthday = allValues.birthday.$d.toISOString();
         }
         if (isEqual(allValues, initialValues)) {
@@ -86,7 +90,6 @@ const ProfileForm: React.FC = () => {
 
     const submitForm = async (values: DoctorEditModel) => {
         if (values.birthday !== null) {
-            // @ts-ignore
             values.birthday = values.birthday.$d.toISOString();
         }
         // @ts-ignore

@@ -3,6 +3,9 @@ import {useNavigate} from "react-router-dom";
 import {logoutDoctor} from "../../api/doctor/logoutDoctor.ts";
 import {routes} from "../../consts/routes.ts";
 import {DownOutlined} from "@ant-design/icons";
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "../../store/store.ts";
+import {setAuth} from "../../store/actions/authActions.ts";
 
 interface DropdownProfileProps {
     name?: string;
@@ -10,10 +13,16 @@ interface DropdownProfileProps {
 
 const DropdownProfile: React.FC<DropdownProfileProps> = ({name}) => {
     const navigate = useNavigate()
+    const dispatch: AppDispatch = useDispatch()
+
+    const handleProfileClick = () => {
+        navigate(routes.profile())
+    }
 
     const logout = async () => {
         try {
             const response = await logoutDoctor();
+            dispatch(setAuth(false));
             if (response && response.status === 200) {
                 setTimeout(() => {
                     navigate(routes.login());
@@ -29,9 +38,7 @@ const DropdownProfile: React.FC<DropdownProfileProps> = ({name}) => {
         {
             key: '1',
             label: 'Профиль',
-            onClick: () => {
-                navigate(routes.profile());
-            },
+            onClick: handleProfileClick
         },
         {
             key: '2',
