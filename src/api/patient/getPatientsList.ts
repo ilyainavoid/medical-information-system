@@ -2,7 +2,8 @@ import {QueryParamsPaged} from "../../interfaces/patient-query-params.ts";
 import axiosInstance from "../axiosInstance.ts";
 
 
-export const getPatientsList = async ({ SearchParams }: { SearchParams: QueryParamsPaged }) => {
+export const getPatientsList = async ({ SearchParams }: { SearchParams: Partial<QueryParamsPaged> }) => {
+    console.log(SearchParams)
     try {
         const response = await axiosInstance.get('/patient', {
             params: SearchParams

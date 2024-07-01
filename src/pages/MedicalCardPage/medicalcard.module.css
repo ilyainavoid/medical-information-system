@@ -1,0 +1,32 @@
+.mainContainer {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.topContent {
+    width: 100%;
+}
+
+.heading {
+    font-weight: 900;
+}
+
+.addInspection {
+    width: 320px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.birthday {
+    margin-top: 20px;
+    align-self: flex-end;
+}
+
+.genderSign {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: -10px;
+    color: #5454f5;
+}

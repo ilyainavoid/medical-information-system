@@ -1,4 +1,3 @@
-import {Conclusion} from "./conclusion-interface.ts";
 import {DiagnosisModel} from "./diagnosis-model-interface.ts";
 
 export interface InspectionPreviewModel {
@@ -6,7 +5,7 @@ export interface InspectionPreviewModel {
     createTime: string;
     previousId?: string | null;
     date: string;
-    conclusion: Conclusion;
+    conclusion: string;
     doctorId: string;
     doctor: string;
     patientId: string;

@@ -63,10 +63,41 @@ const PatientPage: React.FC = () => {
         setQueryParams(prev => ({...prev, page}));
     };
 
+    const prepareQuery = (params: QueryParamsPaged): Partial<QueryParamsPaged> => {
+        const updatedQueryParams: Partial<QueryParamsPaged> = { ...params };
+
+        if (updatedQueryParams.conclusions && updatedQueryParams.conclusions.length === 0) {
+            delete updatedQueryParams.conclusions;
+        }
+
+        if (updatedQueryParams.conclusions && updatedQueryParams.conclusions.length === 1) {
+            updatedQueryParams.conclusions = updatedQueryParams.conclusions[0].split(',');
+        }
+
+        if (!updatedQueryParams.onlyMine) {
+            delete updatedQueryParams.onlyMine;
+        }
+
+        if (!updatedQueryParams.scheduleVisits) {
+            delete updatedQueryParams.scheduleVisits;
+        }
+
+        if (updatedQueryParams.sorting === null) {
+            delete updatedQueryParams.sorting;
+        }
+
+        if (updatedQueryParams.name === '' || updatedQueryParams.name === ' ' || updatedQueryParams.name === null) {
+            delete updatedQueryParams.name;
+        }
+
+        return updatedQueryParams;
+    }
+
     useEffect(() => {
+        const searchParams = prepareQuery(queryParams);
         const fetchData = async () => {
             try {
-                const response = await getPatientsList({SearchParams: queryParams});
+                const response = await getPatientsList({SearchParams: searchParams});
                 setPatientsListPaged(response);
             } catch {
                 notify('error', 'Произошла ошибка при получении списка пациентов')

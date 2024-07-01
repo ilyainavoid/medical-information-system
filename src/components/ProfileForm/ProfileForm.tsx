@@ -14,6 +14,7 @@ import {editDoctorProfile} from "../../api/doctor/editDoctorProfile.ts";
 import {AppDispatch} from "../../store/store.ts";
 import {useNotification} from "../NotificationProvider/NotificationProvider.tsx";
 import {updateProfile} from "../../store/actions/profileActions.ts";
+import {disabledDate} from "../../utils/disableDate.ts";
 
 dayjs.extend(utc);
 
@@ -71,10 +72,6 @@ const ProfileForm: React.FC = () => {
             })
         }
     }, [profile]);
-
-    const disabledDate = (current: dayjs.ConfigType): boolean => {
-        return dayjs(current).isAfter(dayjs(), 'day');
-    };
 
     const onValuesChange = (_: Partial<FormValues>, allValues: FormValues) => {
         allValues.gender = (allValues.gender === 'Male' || allValues.gender === 'Мужской') ? 'Мужской' : 'Женский';

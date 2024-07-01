@@ -6,6 +6,9 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage.tsx";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.tsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.tsx";
 import PatientPage from "./pages/PatientPage/PatientPage.tsx";
+import MedicalCardPage from "./pages/MedicalCardPage/MedicalCardPage.tsx";
+import CreateInspectionPage from "./pages/CreateInspectionPage/CreateInspectionPage.tsx";
+import InspectionDetailsPage from "./pages/InspectionDetailsPage/InspectionDetailsPage.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +29,18 @@ export const router = createBrowserRouter([
                     {
                         path: routes.patients(),
                         element: <PatientPage/>
+                    },
+                    {
+                        path: routes.patient(),
+                        element: <MedicalCardPage/>
+                    },
+                    {
+                        path: routes.inspectionCreate(),
+                        element: <CreateInspectionPage/>
+                    },
+                    {
+                        path: routes.inspection(),
+                        element: <InspectionDetailsPage/>
                     }
                 ]
             },

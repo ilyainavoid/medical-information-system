@@ -14,6 +14,7 @@ import {routes} from "../../consts/routes.ts";
 import {useNavigate} from "react-router-dom";
 import dayjs from "dayjs"
 import {processFormValues} from "../../utils/processFormValues.ts";
+import {disabledDate} from "../../utils/disableDate.ts";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -71,10 +72,6 @@ const RegistrationForm: React.FC = () => {
             label: 'Женский'
         }
     ];
-
-    const disabledDate = (current: dayjs.ConfigType): boolean => {
-        return dayjs(current).isAfter(dayjs(), 'day');
-    };
 
     const submitForm = async (values: DoctorRegisterModel) => {
         if (values.birthday) {
